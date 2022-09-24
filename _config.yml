@@ -22,13 +22,14 @@ title: realrains devlog
 email: real.longrain@gmail.com
 description: ""
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://realrain.net"
 github_username: realrains
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 permalink: /posts/:title
 
 google_analytics: G-K790PDN0QV

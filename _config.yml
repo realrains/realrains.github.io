@@ -29,6 +29,7 @@ github_username: realrains
 theme: minima
 plugins:
   - jekyll-feed
+permalink: /posts/:title
 
 google_analytics: G-K790PDN0QV
 

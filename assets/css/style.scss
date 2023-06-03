@@ -2,5 +2,37 @@
 ---
 
 @import "{{ site.theme }}";
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
-.post-content p { margin-bottom: 30px; }
+.post {
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-weight: 300;
+}
+
+.post-title {
+    font-size: 30px;
+}
+
+.post-content h2 {
+    font-size: 28px;
+    font-weight: 300;
+    padding-top: 30px;
+    letter-spacing: -.1rem;
+}
+
+.post-content h3 {
+    font-size: 22px;
+    font-weight: 300;
+    padding-top: 15px;
+    letter-spacing: -.1rem;
+}
+
+.post-content p { 
+    font-weight: 300;
+    line-height: 1.7rem;
+    margin-bottom: 30px;
+}
+
+.post-content p strong {
+    font-weight: 500;
+}

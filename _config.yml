@@ -32,7 +32,7 @@ plugins:
   - jekyll-sitemap
 permalink: /posts/:title
 
-google_analytics: G-K790PDN0QV
+google_analytics: GTM-NZ5F7437
 
 # Exclude from processing.
 # The following items will not be processed, by default.

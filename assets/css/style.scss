@@ -4,6 +4,7 @@
 @import "{{ site.theme }}";
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
+
 .post {
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font-weight: 300;
@@ -39,4 +40,23 @@
 
 .post-content code {
     font-size: 12px;
+}
+
+.post-list .post-link {
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-weight: 430;
+    font-size: 1.3rem;
+    color: rgb(2, 6, 23);
+}
+
+.post-list .post-link:hover {
+    color: rgb(3, 105, 161);
+}
+
+.post-list .post-meta {
+    font-style: italic;
+}
+
+.post-list a {
+    text-decoration-line: none;
 }

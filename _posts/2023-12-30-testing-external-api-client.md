@@ -148,7 +148,7 @@ class RestProductClientTest {
 
 {% include image.html url='/assets/image/integration-test-diagram.png' %}
 
-만약 API 클라이언트 구현 자체에 대한 테스트가 아니라 위에서 구현한 `RestProductClient` 와 같은 클라이언트가 다른 비즈니스 객체의 협력 객체로 사용되는 테스트라면 어떻게 해야 할까요? 마찬가지로 MockServer 를 이용해서 HTTP 통신은 Mocking 할 수 있지만, 테스트의 핵심 관심사는 HTTP 통신이 아니라 외부 서비스로부터 받은 응답을 바탕으로 기대하는 추가적인 비즈니스 로직이 제대로 수행되는지이기 때문에 MockServer 를 사용하는건 다소 불필요하고 번거로운 일일 수 있습니다.
+만약 API 클라이언트 구현 자체에 대한 테스트가 아니라 위에서 구현한 `RestProductClient` 와 같은 클라이언트가 다른 비즈니스 객체의 협력 객체로 사용되는 테스트라면 어떻게 해야 할까요? 마찬가지로 MockServer 를 이용해서 HTTP 통신은 Mocking 할 수 있지만, 테스트의 핵심 관심사는 HTTP 통신이 아니라 외부 서비스로부터 받은 응답을 바탕으로 기대하는 추가적인 비즈니스 로직이 제대로 수행되는지이기 때문에 MockServer 를 사용하는건 다소 불필요하고 번거로운 일일 수 있습니다. 우리가 Repository 와 협력관계에 있는 클래스를 테스트할 때 DB 를 Mocking 하지 않는 것을 상상해보면 이해하기 쉽습니다.
 
 ```java
 @Service

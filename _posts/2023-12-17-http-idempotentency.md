@@ -19,13 +19,7 @@ date: 2023-12-17
 
 **HTTP 메서드의 성질**
 
-|  Method  | Safe  | Idempotent | Cachable |
-| :------: | :---: | :--------: | :------: |
-|  `GET`   |   O   |     O      |    O     |
-|  `POST`  |   X   |     X      |    O     |
-|  `PUT`   |   X   |     O      |    X     |
-| `DELETE` |   X   |     O      |    X     |
-| `PATCH`  |   X   |     X      |    X     |
+{% include image.html url='/assets/image/http_summary.png' description='https://ko.wikipedia.org/wiki/HTTP' %}
 
 
 HTTP 멱등의 의미는 [RFC7231 4.2.2](https://www.rfc-editor.org/rfc/rfc7231#section-4.2.2) 에서 더 자세히 살펴볼 수 있는데, 결국 핵심은 멱등의 '결과'란 **리소스(서버)의 상태**를 말한다는 것이다. 따라서 **응답 코드나 응답 본문에 대해서는 멱등성을 보장하지 않으며** 이는 선택의 문제이다. 즉, `DELETE` 메서드는 멱등하지만 응답 코드 및 응답 바디는 멱등하지 않을 수 있다는 것이다.

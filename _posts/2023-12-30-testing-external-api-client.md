@@ -4,8 +4,6 @@ title: 외부 API 클라이언트 테스트하기
 date: 2023-12-30
 ---
 
-{% include image.html url='/assets/image/external_robot.jpeg' width='50%' %}
-
 마이크로서비스 아키텍처 (MSA) 가 일반화된 요즘의 개발 환경에서는 어플리케이션 외부의 다양한 서비스와 여러 방식으로 통신하게 됩니다. 기능 구현을 위해서 한 어플리케이션 내에서 아무리 적어도 서너개 이상의 외부 서비스와 연동하게 되곤 하는데, 내 서비스의 API 를 노출할 때와 다른 서비스의 API 를 사용할 때 모두 HTTP 프로토콜을 사용하는 것이 가장 일반적이라 사용할 API 제공자가 정의한 스펙에 맞춰 해당 HTTP API 를 호출하는 코드를 작성하는 상황이 상당히 자주 일어납니다.
 
 이와 관련해 언어나 프레임워크 별로 어떤 HTTP 클라이언트를 사용할지, 어떤 방식으로 예외를 처리할지, 다수의 API 를 호출해야 하는 상황에서 성능은 어떻게 개선할지 등 여러 중요한 엔지니어링적 고민사항들이 많이 생겨나곤 합니다. 이번 포스트에서는 그 중에서도 외부 API 클라이언트의 테스트에 대해 이야기해보고, 스프링 프레임워크 기반의 개발 환경에서의 테스트 사례도 공유해드리도록 하겠습니다.
@@ -233,11 +231,11 @@ class ProductServiceIntegrationTest {
 }
 ```
 
-### 인터페이스를 추가하고 Stub 구현하기
+### 인터페이스를 추가하고 직접 테스트 더블 구현하기
 
 {% include image.html url='/assets/image/service-stub-diagram.png' %}
 
-위의 두 방법은 구체 클래스인 `RestProductClient` 를 Mocking 하는 방법이었습니다. 하지만 구체클래스를 Mocking 하는 것은 테스트의 유연성을 떨어뜨리고 테스트 코드의 복잡성을 증대시키는 요인이 될 수 있습니다.  만약 `ProductService` 가 구체 클래스가 아닌 인터페이스에 의존하도록 할 수 있다면 Mocking 없이 Stub 을 구현해서 테스트를 수행할 수 있습니다.
+위의 두 방법은 구체 클래스인 `RestProductClient` 를 Mocking 하는 방법이었습니다. 하지만 매 테스트 코드마다 외부 의존성을 가지는 클래스를 mocking 하는 것은 쉽지 않은 일이고, `@MockBean` 을 사용할 경우 매 테스트마다 Application Context 가 재생성되기 때문에 테스트 수행 시간이 길어질 수 있습니다. 이런 경우에는 인터페이스를 추가하고 이를 구현하는 테스트 더블 구현체를 만들어서 테스트를 수행하것도 하나의 방법이 될 수 있습니다.
 
 ```java
 public interface ProductClient {
@@ -263,6 +261,7 @@ public class RestProductClient implements ProductClient {
     }
 }
 
+// 테스트 환경에서만 사용할 Stub 구현체
 @Profile("test")
 @Component
 public class StubProductClient implements ProductClient {

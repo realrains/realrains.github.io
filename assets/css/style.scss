@@ -16,16 +16,14 @@
 
 .post-content h2 {
     font-size: 28px;
-    font-weight: 300;
+    font-weight: 350;
     padding-top: 30px;
-    letter-spacing: -.1rem;
 }
 
 .post-content h3 {
     font-size: 22px;
-    font-weight: 300;
+    font-weight: 400;
     padding-top: 15px;
-    letter-spacing: -.1rem;
 }
 
 .post-content p { 
@@ -36,10 +34,6 @@
 
 .post-content p strong {
     font-weight: 500;
-}
-
-.post-content code {
-    font-size: 12px;
 }
 
 .post-list .post-link {
@@ -59,4 +53,13 @@
 
 .post-list a {
     text-decoration-line: none;
+}
+
+.post-content code {
+    font-size: 12px;
+    background-color: rgb(245, 245, 245);
+}
+
+.highlighter-rouge .highlight {
+    background: rgb(245, 245, 245);
 }

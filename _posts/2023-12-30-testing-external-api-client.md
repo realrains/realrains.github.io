@@ -235,7 +235,7 @@ class ProductServiceIntegrationTest {
 
 {% include image.html url='/assets/image/service-stub-diagram.png' %}
 
-위의 두 방법은 구체 클래스인 `RestProductClient` 를 Mocking 하는 방법이었습니다. 하지만 매 테스트 코드마다 외부 의존성을 가지는 클래스를 mocking 하는 것은 쉽지 않은 일이고, `@MockBean` 을 사용할 경우 매 테스트마다 Application Context 가 재생성되기 때문에 테스트 수행 시간이 길어질 수 있습니다. 이런 경우에는 인터페이스를 추가하고 이를 구현하는 테스트 더블 구현체를 만들어서 테스트를 수행하것도 하나의 방법이 될 수 있습니다.
+위의 두 방법은 구체 클래스인 `RestProductClient` 를 Mocking 하는 방법이었습니다. 하지만 매 테스트 코드마다 외부 의존성을 가지는 클래스를 mocking 하는 것은 쉽지 않은 일이고, `@MockBean` 을 사용할 경우 매 테스트마다 Application Context 가 재생성되기 때문에 테스트 수행 시간이 길어질 수 있습니다. 이런 경우에는 인터페이스를 추가하고 이를 구현하는 테스트 더블 구현체를 만들어서 테스트를 수행하는 것도 하나의 방법이 될 수 있습니다.
 
 ```java
 public interface ProductClient {

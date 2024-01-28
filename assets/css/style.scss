@@ -36,6 +36,14 @@
     font-weight: 500;
 }
 
+.post-content ul {
+    margin-bottom: 30px;
+}
+
+.post-content ol {
+    margin-bottom: 30px;
+}
+
 .post-list .post-link {
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font-weight: 430;
@@ -62,4 +70,12 @@
 
 .highlighter-rouge .highlight {
     background: rgb(245, 245, 245);
+}
+
+.footnotes {
+    font-size: 0.8rem;
+}
+
+.footnotes p {
+    margin-bottom: 0px;
 }

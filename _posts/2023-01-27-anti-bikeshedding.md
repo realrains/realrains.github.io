@@ -35,7 +35,7 @@ date: 2024-01-27
 
 결국 결론을 내려야 하거나 해결해야 하는 하는 문제가 쏟는 비용대비 프로젝트의 성공에 얼마만큼 기여하는지 가늠하는 것이 필요합니다. 프로젝트의 성공이란 특정 시점에서 측정하기 어렵고 그 매트릭도 다양하므로 명확한 상관관계는 알 수 없어도 괜찮습니다. 단지 비용에 따라 기여도가 어떤 추이로 변화하는지 살펴볼 수 있으면 됩니다.
 
-{% include image.html url='/assets/image/cost-per-contrib.png' description='' width='80%' description='코드 스타일은 중요합니다. 그러나 중괄호 스타일을 K&R 로 할지, BSD 로 할지 논의하는게 큰 의미가 있을까요?' %}
+{% include image.html url='/assets/image/cost-per-contrib.webp' description='' width='80%' description='코드 스타일은 중요합니다. 그러나 중괄호 스타일을 K&R 로 할지, BSD 로 할지 논의하는게 큰 의미가 있을까요?' %}
 
 개별 문제에 대해 대략적인 비용-효율을 가늠해 봤다면 이를 아이젠하워 매트릭스[^3]를 벤치마킹해서 사분면에 놓아 볼 수 있을 것입니다.
 

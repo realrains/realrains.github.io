@@ -12,7 +12,7 @@ date: 2023-12-30
 
 외부 API 클라이언트에 대한 테스트를 작성한다고 했을 때, 그 필요성 자체에 의문을 품는 분들이 종종 있습니다. 외부 API 는 우리 어플리케이션에서 제어 불가능한 외부 프로세스 자원이기 때문에 테스팅을 하는 것이 의미가 없다고요. 우리 어플리케이션의 정상 동작이 결국 실 환경에서 외부 API 의 상태와 기능 변경에 영향을 받기 때문에 개발이나 스테이징 환경에서의 통합 테스트 정도만 의미가 있다고 말하기도 합니다.
 
-{% include image.html url='/assets/image/diagram_exteranl_api_test.png' %}
+{% include image.html url='/assets/image/diagram_exteranl_api_test.webp' %}
 
 하지만 이 말은 절반은 맞고 절반은 틀렸습니다. 외부 API 는 분명히 우리 어플리케이션에서 제어 불가능한 외부 자원이기 때문에 우리 어플리케이션에서 아무리 잘 테스트 하더라도 항상 정상임을 보증할 수 없습니다. 그러나 **테스트에서 확인하고자 하는 것은 언제까지나 우리가 작성한 코드이지 외부의 서비스가 아닙니다.** 
 
@@ -144,7 +144,7 @@ class RestProductClientTest {
 
 ## API 클라이언트가 협력 객체인 경우
 
-{% include image.html url='/assets/image/integration-test-diagram.png' %}
+{% include image.html url='/assets/image/integration-test-diagram.webp' %}
 
 만약 API 클라이언트 구현 자체에 대한 테스트가 아니라 위에서 구현한 `RestProductClient` 와 같은 클라이언트가 다른 비즈니스 객체의 협력 객체로 사용되는 테스트라면 어떻게 해야 할까요? 마찬가지로 MockServer 를 이용해서 HTTP 통신은 Mocking 할 수 있지만, 테스트의 핵심 관심사는 HTTP 통신이 아니라 외부 서비스로부터 받은 응답을 바탕으로 기대하는 추가적인 비즈니스 로직이 제대로 수행되는지이기 때문에 MockServer 를 사용하는건 다소 불필요하고 번거로운 일일 수 있습니다. 우리가 Repository 와 협력관계에 있는 클래스를 테스트할 때 DB 를 Mocking 하지 않는 것을 상상해보면 이해하기 쉽습니다.
 
@@ -233,7 +233,7 @@ class ProductServiceIntegrationTest {
 
 ### 인터페이스를 추가하고 직접 테스트 더블 구현하기
 
-{% include image.html url='/assets/image/service-stub-diagram.png' %}
+{% include image.html url='/assets/image/service-stub-diagram.webp' %}
 
 위의 두 방법은 구체 클래스인 `RestProductClient` 를 Mocking 하는 방법이었습니다. 하지만 매 테스트 코드마다 외부 의존성을 가지는 클래스를 mocking 하는 것은 쉽지 않은 일이고, `@MockBean` 을 사용할 경우 매 테스트마다 Application Context 가 재생성되기 때문에 테스트 수행 시간이 길어질 수 있습니다. 이런 경우에는 인터페이스를 추가하고 이를 구현하는 테스트 더블 구현체를 만들어서 테스트를 수행하는 것도 하나의 방법이 될 수 있습니다.
 

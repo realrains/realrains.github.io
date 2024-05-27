@@ -4,13 +4,13 @@ title: HTTP Delete 를 두 번 호출하면 응답 코드는 뭘까?
 date: 2023-12-17
 ---
 
-{% include image.html url='/assets/image/http-idempotentency-title.png' %}
+{% include image.html url='/assets/image/http-idempotentency-title.webp' %}
 
 같은 리소스에 대해 `DELETE /resource/{id}` 와 같이 클라이언트에서 http delete 메서드를 두 번 호출하면 서버에서는 응답 코드로 무엇을 반환해야 할까? '존재하지 않는 리소스' 에 대한 삭제 요청이니 `404 Not Found` 여야 할까? 아니면 '이미 삭제된 것을 삭제' 하는 멱등한 연산이니 `200 OK` 를 줄 수도 있지 않을까?
 
 ## HTTP Delete 는 멱등하다?
 
-{% include image.html url='/assets/image/dalle_404.jpeg' width='50%' description='Created by DALL-E' %}
+{% include image.html url='/assets/image/dalle_404.webp' width='50%' description='Created by DALL-E' %}
 
 수학에서 멱등(冪等, idempotent) 이란 `f(f(x)) = f(x)` 를 만족하는 함수를 말한다. 즉, 함수를 여러 번 적용해도 '결과'가 달라지지 않는다는 것이다. [RFC7231](https://www.rfc-editor.org/rfc/rfc7231) 에 따르면, HTTP 메서드 중에서 멱등한 메서드로는 `GET`, `PUT`, `DELETE` 를 들 수 있다. `GET` 은 조회이므로 당연히 멱등하다. `PUT` 은 리소스를 생성하거나 갱신하는데, 같은 리소스에 대해 여러 번 호출하면 동일한 결과로 리소스를 갱신하는 것이므로 결과는 같다. `DELETE` 도 마찬가지로 여러번 삭제를 호출해도 리소스는 삭제된 상태로 동일할 것이다.
 
@@ -19,7 +19,7 @@ date: 2023-12-17
 
 **HTTP 메서드의 성질**
 
-{% include image.html url='/assets/image/http_summary.png' description='https://ko.wikipedia.org/wiki/HTTP' %}
+{% include image.html url='/assets/image/http_summary.webp' description='https://ko.wikipedia.org/wiki/HTTP' %}
 
 
 HTTP 멱등의 의미는 [RFC7231 4.2.2](https://www.rfc-editor.org/rfc/rfc7231#section-4.2.2) 에서 더 자세히 살펴볼 수 있는데, 결국 핵심은 멱등의 '결과'란 **리소스(서버)의 상태**를 말한다는 것이다. 따라서 **응답 코드나 응답 본문에 대해서는 멱등성을 보장하지 않으며** 이는 선택의 문제이다. 즉, `DELETE` 메서드는 멱등하지만 응답 코드 및 응답 바디는 멱등하지 않을 수 있다는 것이다.
@@ -28,7 +28,7 @@ HTTP 멱등의 의미는 [RFC7231 4.2.2](https://www.rfc-editor.org/rfc/rfc7231#
 
 초기 HTTP는 서버에 있는 파일이나 문서에 대한 요청을 처리하기 위해 설계되었다. 그래서 기본적으로 응답 코드는 원격 서버에 있는 파일이나 문서의 상태를 나타내기 위해 만들어졌다. 예를 들어 `404 Not Found` 는 말 그대로 클라이언트가 요청한 URI 의 리소스가 서버에 없다는 것을 나타내고, `201 Created` 는 서버에 리소스가 생성되었다는 것을 나타낸다.
 
-{% include image.html url='/assets/image/ambiguous.jpeg' width='60%' description='생각하기에 달렸다' %}
+{% include image.html url='/assets/image/ambiguous.webp' width='60%' description='생각하기에 달렸다' %}
 
 REST 원칙을 기반으로 설계된 API 에서는 리소스가 파일이나 문서가 아니라 비즈니스 객체를 나타내는 경우가 많다. 이때 대부분 비즈니스 객체에 대한 상태를 응답 코드에 대응 시킬 수 있지만 간혹 비즈니스 이외의 논리가 개입되어 상태 코드의 의미가 모호해지는 경우가 있다. 예를 들어 `GET /resource/{id}` 를 호출할 때 `404 Not Found` 를 반환 받았다고 하자. 직관적으로 생각할 때는 id 에 대응하는 객체가 존재하지 않는다고 생각할 수 있지만, 실제로는 서버에 해당 요청을 처리하는 코드가 없어서 WAS 에서 `404 Not Found` 를 반환하는 경우일 수도 있다. 이 경우에는 클라이언트는 리소스가 존재하지 않는다고 오해할 수 있다.
 
@@ -52,7 +52,7 @@ REST 에 기반한 설계는 API 를 사용자가 이해하기 쉽게 계층화 
 
 ## 결론
 
-{% include image.html url='/assets/image/it-depends.jpeg' width='50%' description='케바케' %}
+{% include image.html url='/assets/image/it-depends.webp' width='50%' description='케바케' %}
 
 다소 허무하지만 결론은 **'상황에 따라 다르다'** 이다. 이전 단락에서 언급한 두 가지 관점 말고도 프론트엔드에서 호출하는 API 냐, 서버에서 호출하는 API 냐에 따라 상태 코드를 다르게 정의할 수도 있다.
 

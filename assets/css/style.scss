@@ -2,11 +2,9 @@
 ---
 
 @import "{{ site.theme }}";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
 
 .post {
-    font-family: 'Noto Sans KR', 'sans-serif';
+    font-family: 'sans-serif';
     font-weight: 300;
 }
 
@@ -45,7 +43,7 @@
 }
 
 .post-list .post-link {
-    font-family: 'Noto Sans KR', 'sans-serif';
+    font-family: 'sans-serif';
     font-weight: 430;
     font-size: 1.3rem;
     color: rgb(2, 6, 23);

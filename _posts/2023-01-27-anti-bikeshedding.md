@@ -4,7 +4,7 @@ title: 안티 바이크쉐딩
 date: 2024-01-27
 ---
 
-{% include image.html url='/assets/image/bikeshed.jpeg' width='80%' %}
+{% include image.html url='/assets/image/bikeshed.webp' width='80%' %}
 
 [파킨슨의 사소함의 법칙 (Parkinson’s law of triviality)](https://en.wikipedia.org/wiki/Law_of_triviality) 으로도 잘 알려져 있는 바이크쉐딩 (Bikeshedding)[^1] 은 조직이 중요한 일은 방치한 채 사소하고 작은 일에 불균형적으로 많은 시간을 할애하는 경향이 있음을 설명하는 단어입니다. 소프트웨어 프로젝트를 진행하면서 사소하거나 전체 프로젝트의 목표 달성에 비교적 중요하지 않은 세부 사항에 지나치게 시간을 쏟게 되었던 경험이 한 번쯤은 있을 것입니다.
 
@@ -21,7 +21,7 @@ date: 2024-01-27
 
 바이크쉐딩은 문제가 되는 안건이 최종적으로 결론나거나 사라지기 전까지는 쉽게 해결되지 않습니다. 이러한 상황에서의 가장 쉬운 해결책은 결정을 내릴수 있는 **독재자**를 두는 것입니다. 그렇다면 누가 독재자가 되어야 할까요? 구성원을 리드할 수 있는 카리스마 있는 리더가 있다면 다행이지만, 매니저가 일일히 결정 사항에 개입하기 어려운 소규모 프로젝트거나 조직 구성이나 문화적인 영향 등으로 결정의 총대를 맬 사람이 나타나기 어려운 경우가 많습니다.
 
-{% include image.html url='/assets/image/guido-portrait.jpg' description='파이썬의 자비로운 종신 독재자(BDFL) 였던 귀도 반 로섬' width='80%' %}
+{% include image.html url='/assets/image/guido-portrait.webp' description='파이썬의 자비로운 종신 독재자(BDFL) 였던 귀도 반 로섬' width='80%' %}
 
 그러한 상황에서는 아래 세 가지 스텝으로 문제를 해결해 볼 수 있을 것입니다.
 
@@ -39,7 +39,7 @@ date: 2024-01-27
 
 개별 문제에 대해 대략적인 비용-효율을 가늠해 봤다면 이를 아이젠하워 매트릭스[^3]를 벤치마킹해서 사분면에 놓아 볼 수 있을 것입니다.
 
-{% include image.html url='/assets/image/eisenhower-matrix.png' description='' width='90%' description='' %}
+{% include image.html url='/assets/image/eisenhower-matrix.webp' description='' width='90%' description='' %}
 
 먼저 1사분면에 놓아지는 **고비용-고기여** 항목들은 논의나 결정에 필요한 비용이 크지만 그만큼 프로젝트의 성공에 중요한 것들입니다. 소프트웨어 아키텍처를 결정하거나, 핵심 기능을 구현하기 위한 프레임워크나 라이브러리를 결정하는 문제이지요. 고비용-고기여 항목들의 특징은 대부분 나중에 결정을 되바꾸기 어려운 항목이라는 것입니다. 데이터베이스와 같은 핵심 인프라스트럭처는 아무리 소프트웨어를 유연하게 설계해도 나중에 바꾸려면 많은 비용이 수반됩니다. 그래서 가장 중요한 문제들입니다.
 
@@ -57,7 +57,7 @@ date: 2024-01-27
 
 따라서 명확하게 논의의 컨텍스트를 분리하는것도 바이크쉐딩을 피하는데 도움이 될 수 있습니다. 회의 자리라면 단일 안건 항목으로 회의를 진행하는 것이 좋습니다. 그것이 어렵다면 최소한 중요도와 비용이 비슷한 문제들끼리 비슷하게 묶는것이 좋습니다. 특히 저비용 문제들이라면 따로 회의를 할 것도 없이 간단하게 팀 메신저안에서 제안-채택하는 것 만으로도 충분할 수 있습니다. 무엇보다 중요한 것은 회의 참석자 수를 최소한의 핵심 관계자만으로 제한하는 것입니다.
 
-{% include image.html url='/assets/image/사공이많으면.jpeg' description='' width='90%' description='사공이 많으면 배가 진짜 산으로 간다' %}
+{% include image.html url='/assets/image/사공이많으면.webp' description='' width='90%' description='사공이 많으면 배가 진짜 산으로 간다' %}
 
 만약 풀 리퀘스트를 요청하는 상황이라면 마찬가지로 하나의 풀 리퀘스트 안에 여러 변경사항을 섞지 않는 것이 좋습니다. 특히 바이크쉐딩이 발생할만한 사소한 변경 사항이 최소한으로 포함되도록 하나의 풀 리퀘스트에서 변경하는 코드 라인의 수를 최대한 작게 유지하는것이 중요합니다.
 

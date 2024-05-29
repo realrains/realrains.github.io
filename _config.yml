@@ -25,6 +25,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://realrain.net"
 github_username: realrains
 
+lang: ko
+
 # Build settings
 theme: minima
 plugins:

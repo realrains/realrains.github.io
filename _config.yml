@@ -33,6 +33,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 permalink: /posts/:title
+show_excerpts: false
 
 # Exclude from processing.
 # The following items will not be processed, by default.

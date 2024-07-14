@@ -206,7 +206,11 @@
 
 .post-link {
     display: block;
-    @include relative-font-size(1.5);
+    @include relative-font-size(1.3);
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 
@@ -232,26 +236,27 @@
     margin-bottom: $spacing-unit;
 
     h2 {
-        @include relative-font-size(2);
+        margin-top: $spacing-unit * 1.2;
+        @include relative-font-size(1.75);
 
         @include media-query($on-laptop) {
-            @include relative-font-size(1.75);
+            @include relative-font-size(1.65);
         }
     }
 
     h3 {
-        @include relative-font-size(1.625);
+        @include relative-font-size(1.375);
 
         @include media-query($on-laptop) {
-            @include relative-font-size(1.375);
+            @include relative-font-size(1.275);
         }
     }
 
     h4 {
-        @include relative-font-size(1.25);
+        @include relative-font-size(1.125);
 
         @include media-query($on-laptop) {
-            @include relative-font-size(1.125);
+            @include relative-font-size(1.025);
         }
     }
 }

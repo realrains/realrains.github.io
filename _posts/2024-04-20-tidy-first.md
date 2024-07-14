@@ -2,7 +2,6 @@
 layout: post
 title: 코드 정리는 돈이 되나? - Tidy First?
 date: 2024-04-20
-description: 켄트 벡의 Tidy First 를 읽고 느낀점들과 여러 고민에 대한 이야기
 ---
 
 {% include image.html url='/assets/image/tidy-first.webp' width='70%' description='Kent Beck (2024) \'Tidy First?\', 한빛미디어' %}

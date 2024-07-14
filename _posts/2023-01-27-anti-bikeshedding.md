@@ -2,7 +2,6 @@
 layout: post
 title: 안티 바이크쉐딩
 date: 2024-01-27
-description: 바이크쉐딩은 무엇이고 어떻게 바이크쉐딩을 피할 수 있을까?
 ---
 
 {% include image.html url='/assets/image/bikeshed.webp' width='80%' %}

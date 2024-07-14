@@ -23,7 +23,6 @@ email: real.longrain@gmail.com
 description: "realarain blog"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://realrain.net"
-github_username: realrains
 
 lang: ko
 
@@ -34,6 +33,26 @@ plugins:
   - jekyll-sitemap
 permalink: /posts/:title
 show_excerpts: false
+
+# social links
+github_username: realrains
+rss: rss
+# twitter_username: jekyllrb
+# dribbble_username: jekyll
+# facebook_username: jekyll
+# flickr_username: jekyll
+# instagram_username: jekyll
+# linkedin_username: jekyll
+# pinterest_username: jekyll
+# youtube_username: jekyll
+# googleplus_username: +jekyll
+
+# Mastodon instances
+# mastodon:
+# - username: jekyll
+#   instance: example.com
+# - username: jekyll2
+#   instance: example.com
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -1,21 +1,18 @@
 ---
-layout: page
+layout: about
 title: About
 description: About
 permalink: /about
 ---
 
-# Jinwoo Jang (張珍禹)
+**Jinwoo Jang (장진우, 張珍禹) / Software Engineer**
 
-안녕하세요, 소프트웨어 개발자로 일하는 장진우의 블로그입니다.
+**Experience**
+* Kakao Corp. (2020.1 ~)
+* Samsung Electronics (2019.1 ~ 2020.1)
 
-# CV
-
-* [영문 이력서 (English Resume)](/assets/files/Jinwoo%20Jang%20CV.pdf)
+**Contact**
 * [LinkedIn](https://www.linkedin.com/in/jinwoojang/)
-
-# Contact
-
-* [real.longrain@gmail.com](real.longrain@gmail.com)
-* [Github](https://github.com/realrains)
+* [Email](real.longrain@gmail.com)
+* [GitHub](https://github.com/realrains)
 

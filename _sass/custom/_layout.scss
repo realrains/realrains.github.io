@@ -18,6 +18,10 @@
     margin-bottom: 0;
     float: left;
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &,
     &:visited {
         color: $grey-color-dark;
@@ -39,6 +43,10 @@
     .page-link {
         color: $text-color;
         line-height: $base-line-height;
+
+        &:hover {
+            text-decoration: none;
+        }
 
         // Gaps between nav items, but not on the last one
         &:not(:last-child) {
@@ -172,6 +180,11 @@
     }
 }
 
+.copyright {
+    color: $grey-color;
+    @include relative-font-size(0.8);
+}
+
 
 
 /**
@@ -223,12 +236,13 @@
 }
 
 .post-title {
-    @include relative-font-size(2.625);
+    @include relative-font-size(2);
+    font-weight: 600;
     letter-spacing: -1px;
     line-height: 1;
 
     @include media-query($on-laptop) {
-        @include relative-font-size(2.25);
+        @include relative-font-size(1.5);
     }
 }
 
@@ -240,7 +254,7 @@
         @include relative-font-size(1.75);
 
         @include media-query($on-laptop) {
-            @include relative-font-size(1.65);
+            @include relative-font-size(1.4);
         }
     }
 

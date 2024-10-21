@@ -73,7 +73,7 @@ public interface ApplicationRepository extends CrudRepository<Application, Long>
 }
 ```
 
-위와 같이 새로운 조회 메서드 `findByApplicantId` 를 ApplicationRepository 에 추가해 지원자 기준으로 모든 Application 을 가져온 뒤 stream 을 활용해 모든 Attachment 리스트를 만들어 낼 수 있겠지요. Attachment 만을 가져오기 위해 Reviewer 와도 불필요한 조인이 발생할 것입니다. fetch type 을 LAZY 로 설정해 해결할 수도 있겠지만 이는 Application 을 가져오는 다른 모든 기능들에 영향을 주기 때문에 다른 곳에서 성능 저하가 발생할 수 있습니다. 읽기 요구사항을 만족시키기 위한 변경사항이 다른곳에 영향을 주는 대표적인 예입니다.
+위와 같이 새로운 조회 메서드 `findByApplicantId` 를 ApplicationRepository 에 추가해 지원자 기준으로 모든 Application 을 가져온 뒤 stream 을 활용해 모든 Attachment 리스트를 만들어 낼 수 있겠지요. 만약 applicationId 리스트에 해당하는 모든 Attachment 를 가져와야 한다면요? 쓸모 없는 Application 테이블을 조회해야 할 뿐 아니라 N+1 문제가 발생해 성능에도 영향을 미칠 것입니다. 엔티티 릴레이션의 fetch type 을 바꿀 수도 있고, Hibernate 의 @BatchSize 어노테이션을 활용해 개선할 수도 있지만 다른 업데이트 기능에 영향을 미칠수 있죠, 읽기 요구사항을 만족시키기 위한 변경사항이 다른곳에 영향을 주는 대표적인 예입니다.
 
 그렇다면 Attachemnt 만을 조회할 수 있는 JPA Repository 를 추가하면 되지 않을까요? 조금은 맞았지만 이 역시 좋은 방법은 아닙니다. Attachement 가 root 엔티티가 아님에도 추가/삭제가 가능한 인터페이스가 열려 있으면 조심한다 하더라도 데이터 일관성이 깨질 수 있는 잠재적인 위험이 있기 때문입니다. 읽기 요구사항에 불필요한 영속성 컨텍스트가 여전히 동작하기도 하고요.
 
@@ -87,7 +87,7 @@ public interface AttachmentRepository extends CrudRepository<Attachment, Long> {
 
 위와 같이 읽기 전용 트랜잭션을 가지도록 제한하거나 JPA Projection 을 활용할수도 있겠습니다. 업데이트 동작을 제한할수도 있고 영속성 컨텍스트를 거치지 않게 할수도 있죠. 그러나 @Query 어노테이션에 JPQL 을 작성해야 하는 번거로움과 JPA 구현체 하나당 엔티티 하나만을 조회할 수 있다는 제한 때문에 읽기 요구사항이 생길때마다 하위 도메인에 대한 읽기 전용 Repository 가 추가되어야 합니다.
 
-가장 좋은 방법은 읽기 요구사항만을 만족시키기 위한 별도의 쿼리 서비스를 구현하는 것입니다. 대표적으로 QueryDSL 이 있습니다. 엔티티 하나당 Repository 를 하나하나 만들 필요도 없고 번잡한 JPQL 이나 네이티브 쿼리를 작성할 필요도 없습니다.
+가장 좋은 방법은 읽기 요구사항만을 만족시키기 위한 별도의 쿼리 서비스를 구현하는 것입니다. QueryDSL 을 활용해도 좋고 심지어 Native SQL 을 사용하는 것도 하나의 선택입니다. 엔티티 하나당 Repository 를 하나하나 만들 필요도 없고 번잡한 JPQL 이나 네이티브 쿼리를 작성할 필요도 없습니다.
 
 
 ## 참고 자료

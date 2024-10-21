@@ -24,8 +24,7 @@ CQRS(Command and Query Responsibility Seperation) 패턴은 읽기(Query) 요구
 
 위와같은 문제가 발생하는 근본적인 문제는 도메인 주도 설계가 도메인 상태의 일관성을 유지하는 것을 주된 목표로 애그리거트 단위의 업데이트를 강제하기 때문에 읽기 요구사항이 필요한 기능과 코드레벨에서 불일치가 발생하기 때문입니다. 따라서 읽기 요구사항에 의해 도메인 모델이 복잡해지는 경우 도메인 모델에서 읽기 모델을 분리할 수 있습니다. 다음은 스프링 프레임워크가 적용된 자바 어플리케이션을 CQRS 패턴을 통해 리팩터링 하는 예제입니다.
 
-입학원서를 나타내는 Application 엔티티와 1:N 관계를 가지는 증빙파일 Attachment 엔티티가 있습니다. Attachment 는 Application 의 하위 도메인이므로 Application 도메인을 통해서만 추가, 제거되어야 하며 repository 도 root 엔티티인 Application 만 가져야 합니다. 마찬가지로 입학 원서를 심사하는 심사자 Reviewer 엔티티도 1:N 으로 존재합니다.
-
+입학원서를 나타내는 Application 엔티티와 1:N 관계를 가지는 증빙파일 Attachment 엔티티가 있습니다. Attachment 는 Application 의 하위 도메인이므로 Application 도메인을 통해서만 추가, 제거되어야 하며 repository 도 root 엔티티인 Application 만 가져야 합니다.
 
 ```java
 @Entity
@@ -35,8 +34,6 @@ public class Application {
     private Long applicantId;
     @OneToMany
     private List<Attachment> attachments;
-    @OneToMany
-    private List<Reviewer> reviewers;
 
     public void addAttachment(String filePath) { /* */ }
     public void deleteAttachment(Long attachmentId) { /* */ }
@@ -50,13 +47,6 @@ public class Attachment {
     private Long applicationId;
     private String filePath;
     private LocalDateTime createdAt;
-}
-
-@Entity
-public class Reviewer {
-    @Id
-    private Long id;
-    private Long professorId;
 }
 
 public interface ApplicationRepository extends CrudRepository<Application, Long> {

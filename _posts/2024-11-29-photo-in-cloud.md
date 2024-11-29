@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 아이폰 용량 옵션 vs 클라우드 구독
+title: 아이폰 용량 확장 vs 클라우드 구독
 date: 2024-11-29
 ---
 

@@ -84,14 +84,11 @@ class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private Integer age;
 }
 
-interface People extends JpaRepository<Person, Long> {
-}
+interface People extends JpaRepository<Person, Long> {}
 ```
 
 
@@ -253,7 +250,7 @@ Spring Boot 3.4 버전부터는 `replace` 옵션에 `NON_TEST` 가 추가되고 
 * `@DynamicPropertySource` 를 통해 설정된 `spring.datasource.url` 을 사용하는 모든 연결
 * Testcontainers JDBC 문법을 사용하여 설정된 `spring.datasource.url` 을 사용하는 모든 연결
 
-Docker Compose 를 통해 스프링 부트 어플리케이션을 구성하는 경우가 첫 번째 케이스에 해당하므로 임베디드 데이터소스로 대체되지 않고 테스트에서 컨테이너로 구성된 데이터베이스를 DataSource 로 사용하게 된다.
+도커 컴포즈를 통해 스프링 부트 어플리케이션을 구성하는 경우가 첫 번째 케이스에 해당하므로 임베디드 데이터소스로 대체되지 않고 테스트에서 컨테이너로 구성된 데이터베이스를 DataSource 로 사용하게 된다.
 
 한편 이러한 기능 변화로 인해 TestContainers 를 통해 테스트 데이터베이스를 구성할 때 명시적으로 `AutoConfigureTestDatabase` 의 `replace` 옵션을 `NONE` 으로 설정해주어야 했던 부분도 마찬가지로 불필요하게 되었다.
 

@@ -13,6 +13,6 @@ permalink: /about
 
 **Contact**
 * [LinkedIn](https://www.linkedin.com/in/jinwoojang/)
-* [Email](real.longrain@gmail.com)
 * [GitHub](https://github.com/realrains)
+* real.longrain@gmail.com
 
